@@ -55,7 +55,7 @@
         </div>
       </div>
       <div class="main-action">
-        <button class="btn main__btn" (click)="scrollTo(productsElement)">Выбрать пиццу</button>
+        <a class="btn main__btn" routerLink="/products">Выбрать пиццу</a>
       </div>
     </div>
     <div class="main__image">
@@ -64,44 +64,9 @@
   </div>
 </section>
 
-<section class="products" id="products" #productsElement>
-  <div class="container products__container">
-    <h2 class="products__title" id="products__title">Выберите свою любимую пиццу</h2>
-    <div class="products__items">
-      <!--      <product *ngFor="let product of products | chickenProducts" [product]="product" (addToCartEvent)="addToCart($event, orderElement)"></product>-->
-      <product *ngFor="let product of products" [product]="product" (addToCartEvent)="addToCart($event, orderElement)"></product>
-    </div>
-  </div>
-</section>
 
-<section class="order" id="order" #orderElement>
-  <div class="container order__container">
-    <div class="order__text">
-      <div class="double-title order__double-title">
-        <span class="double-title_span">Хватит думать!</span>
-        Доставим заказ за 30 минут!
-      </div>
-      <div class="order__text-message">Мы гарантированно доставим вашу пиццу за 30 минут с момента оформления
-                                       заказа. Если мы опоздаем даже на 1 минуту - вы получаете весь заказ
-                                       бесплатно и ваучер на скидку на следующий заказ. Мы гордимся нашим сервисом
-                                       и сделаем всё, чтобы наш клиент был доволен и не остался голодный!
-      </div>
-    </div>
-    <div class="order__form">
-      <input type="text" class="base-input order__base-input" coolInput id="product-input"
-             [coolInputDefaultBgColor]="'grey'"
-             [coolInputFocusBgColor]="'pink'"
-             placeholder="Ваша пицца" [(ngModel)]="formValues.productTitle">
-      <input type="text" class="base-input order__base-input" id="address-input" name="address"
-             placeholder="Адрес доставки" [(ngModel)]="formValues.address">
-      <input type="text" class="base-input order__base-input" coolInput id="phone-input" placeholder="Телефон" [(ngModel)]="formValues.phone">
-      <button class="btn order__btn" (click)="createOrder()">Оформить заказ</button>
-    </div>
-    <div class="order__image">
-      <img src="assets/images/pizzzzza.png" alt="Pizzzzza" class="order__image-img">
-    </div>
-  </div>
-</section>
+
+
 
 
 

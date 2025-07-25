@@ -78,7 +78,6 @@ export class ProductComponent {
   addProductToCart() {
     this.cartProductService.count++;
     this.addToCartEvent.emit(this._titleComponent.toUpper())
-
   }
 
 }

@@ -21,6 +21,17 @@
   justify-content: space-between;
 }
 
+.menu__item a {
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(164, 107, 0);
+  line-height: 1;
+}
+.menu__item a.active {
+  color: rgb(103, 68, 0);
+}
+
 .menu__link {
   text-decoration: none;
   font-size: 16px;

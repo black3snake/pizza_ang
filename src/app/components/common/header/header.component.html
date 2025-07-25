@@ -31,13 +31,16 @@
       </div>
       <ul class="menu__list">
         <li class="menu__item">
-          <a class="menu__link" [routerLink]="''" [fragment]="'products'">Пиццы</a>
+          <a class="menu__link" [routerLink]="''" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Главная</a>
         </li>
         <li class="menu__item">
-          <a class="menu__link" [routerLink]="'/about'">О нас</a>
+          <a class="menu__link" [routerLink]="'/products'" routerLinkActive="active">Пиццы</a>
         </li>
         <li class="menu__item">
-          <a class="menu__link" [routerLink]="''" [fragment]="'order'">Сделать заказ</a>
+          <a class="menu__link" [routerLink]="'/about'" routerLinkActive="active">О нас</a>
+        </li>
+        <li class="menu__item">
+          <a class="menu__link" [routerLink]="'/order'"  routerLinkActive="active">Сделать заказ</a>
         </li>
       </ul>
     </nav>
