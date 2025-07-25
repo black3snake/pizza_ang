@@ -3,4 +3,5 @@ export type ProductType = {
   imageAlt: string,
   title: string,
   description: string,
+  datetime: string
 }

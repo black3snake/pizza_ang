@@ -1,0 +1,107 @@
+<section class="main">
+  <div class="container main__container">
+    <div class="main__info">
+      <h1 class="double-title main__double-title">Самая вкусная пицца в мире
+        <span class="double-title_span">только в Pizza Cheff</span>
+      </h1>
+      <div class="main__advantages">
+        <div class="advantage">
+          <div class="advantage__image">
+            <img src="assets/images/hop.png" alt="Hop">
+          </div>
+          <div class="advantage__text">
+            <div class="advantage__title">Лучшее тесто</div>
+            <div class="advantage__description">Мы создаем тесто только из
+                                                отборной итальянской муки
+                                                наивысшего качества
+            </div>
+          </div>
+        </div>
+        <div class="advantage">
+          <div class="advantage__image">
+            <img src="assets/images/kitchen-pack.png" alt="Kepka">
+          </div>
+          <div class="advantage__text">
+            <div class="advantage__title">лучшие повара</div>
+            <div class="advantage__description">Пиццы готовят самые
+                                                профессиональные
+                                                итальянские повара
+            </div>
+          </div>
+        </div>
+        <div class="advantage">
+          <div class="advantage__image">
+            <img src="assets/images/seo-and-web.png" alt="SEO">
+          </div>
+          <div class="advantage__text">
+            <div class="advantage__title">гарантия качества</div>
+            <div class="advantage__description">Наша пиццерия получила
+                                                множество наград и
+                                                признаний по всему миру
+            </div>
+          </div>
+        </div>
+        <div class="advantage">
+          <div class="advantage__image">
+            <img src="assets/images/holidays.png" alt="holiday">
+          </div>
+          <div class="advantage__text">
+            <div class="advantage__title">отборные рецепты</div>
+            <div class="advantage__description">Мы используем рецепты
+                                                от мировых лидеров
+                                                в изготовлении пиццы
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="main-action">
+        <button class="btn main__btn" (click)="scrollTo(productsElement)">Выбрать пиццу</button>
+      </div>
+    </div>
+    <div class="main__image">
+      <img src="assets/images/pizza_big.png" alt="Big pizza" class="main__image-img">
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products" #productsElement>
+  <div class="container products__container">
+    <h2 class="products__title" id="products__title">Выберите свою любимую пиццу</h2>
+    <div class="products__items">
+      <!--      <product *ngFor="let product of products | chickenProducts" [product]="product" (addToCartEvent)="addToCart($event, orderElement)"></product>-->
+      <product *ngFor="let product of products" [product]="product" (addToCartEvent)="addToCart($event, orderElement)"></product>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order" #orderElement>
+  <div class="container order__container">
+    <div class="order__text">
+      <div class="double-title order__double-title">
+        <span class="double-title_span">Хватит думать!</span>
+        Доставим заказ за 30 минут!
+      </div>
+      <div class="order__text-message">Мы гарантированно доставим вашу пиццу за 30 минут с момента оформления
+                                       заказа. Если мы опоздаем даже на 1 минуту - вы получаете весь заказ
+                                       бесплатно и ваучер на скидку на следующий заказ. Мы гордимся нашим сервисом
+                                       и сделаем всё, чтобы наш клиент был доволен и не остался голодный!
+      </div>
+    </div>
+    <div class="order__form">
+      <input type="text" class="base-input order__base-input" coolInput id="product-input"
+             [coolInputDefaultBgColor]="'grey'"
+             [coolInputFocusBgColor]="'pink'"
+             placeholder="Ваша пицца" [(ngModel)]="formValues.productTitle">
+      <input type="text" class="base-input order__base-input" id="address-input" name="address"
+             placeholder="Адрес доставки" [(ngModel)]="formValues.address">
+      <input type="text" class="base-input order__base-input" coolInput id="phone-input" placeholder="Телефон" [(ngModel)]="formValues.phone">
+      <button class="btn order__btn" (click)="createOrder()">Оформить заказ</button>
+    </div>
+    <div class="order__image">
+      <img src="assets/images/pizzzzza.png" alt="Pizzzzza" class="order__image-img">
+    </div>
+  </div>
+</section>
+
+
+
