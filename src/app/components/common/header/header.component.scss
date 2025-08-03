@@ -48,6 +48,22 @@
 .menu__close {
   display: none;
 }
+.header__cart {
+  display: flex;
+  flex-direction: row;
+  gap: 3px;
+  align-items: center;
+  justify-content: space-between;
+  a {
+    text-decoration: none;
+    padding: 5px 3px;
+    background-color: #ffaf18;
+    color: black;
+    border-radius: 5px;
+    font-family: sans-serif;
+  }
+}
+
 
 /* 768 - 1023 */
 @media screen  and (max-width : 1023px) {

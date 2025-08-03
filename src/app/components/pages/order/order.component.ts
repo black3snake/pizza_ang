@@ -1,13 +1,15 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartService} from "../../../services/cart.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Subscription} from "rxjs";
+import {ProductService} from "../../../services/product.service";
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent implements OnInit, OnDestroy {
 
   public formValues = {
     productTitle: '',
@@ -15,25 +17,37 @@ export class OrderComponent implements OnInit {
     phone: '',
   }
 
-  constructor(private cartService: CartService, private activatedRoute: ActivatedRoute) {
+  constructor(private cartService: CartService, private activatedRoute: ActivatedRoute,
+              private productService: ProductService,
+              private router: Router
+  ) {
   }
+
+  private subscribption: Subscription | null = null;
+  private subscribptionOrder: Subscription | null = null;
 
   ngOnInit(): void {
-    // if (this.cartService.product) {
-    //   this.formValues.productTitle = this.cartService.product;
+    // if (this.cartService.product-card) {
+    //   this.formValues.productTitle = this.cartService.product-card;
     ////}
 
-    const productParam = this.activatedRoute.snapshot.queryParamMap.get('product');
-    if (productParam) {
-      this.formValues.productTitle = productParam;
-    }
+    // const productParam = this.activatedRoute.snapshot.queryParamMap.get('product');
+    // if (productParam) {
+    //   this.formValues.productTitle = productParam;
+    // }
 
-    // this.activatedRoute.queryParams.subscribe(params => {
-    //   if (params['product']) {
-    //     this.formValues.productTitle = params['product'];
-    //   }
-    // })
+    this.subscribption = this.activatedRoute.queryParams.subscribe(params => {
+      if (params['product']) {
+        this.formValues.productTitle = params['product'];
+      }
+    })
   }
+
+  // test() {
+  //   if (this.subscribption) {
+  //     this.subscribption.unsubscribe();
+  //   }
+  // }
 
   public createOrder() {
 
@@ -51,12 +65,46 @@ export class OrderComponent implements OnInit {
     }
 
     // ajax запрос
-    alert('Спасибо за заказ')
+    this.subscribptionOrder = this.productService.createOrder({
+      product: this.formValues.productTitle,
+      address: this.formValues.address,
+      phone: this.formValues.phone,
+    })
+      // .subscribe( response => {
+      // if(response.success && !response.message){
+      //   alert('Спасибо за заказ')
+      //
+      //   this.formValues = {
+      //     productTitle: '',
+      //     address: '',
+      //     phone: '',
+      //   }
+      // } else {
+      //   alert('Ошибка..')
+      // }
+      .subscribe({
+        next: (response) => {
+          if (response.success && !response.message) {
+            alert('Спасибо за заказ')
+            this.formValues = {
+              productTitle: '',
+              address: '',
+              phone: '',
+            }
+          }
+        },
+        error: (error: string) => {
+          console.log('Error!!! in order, ', error)
+          this.router.navigate(['/']);
+        }
+      });
 
-    this.formValues = {
-      productTitle: '',
-      address: '',
-      phone: '',
-    }
+
   }
+
+  ngOnDestroy(): void {
+    this.subscribption?.unsubscribe();
+    this.subscribptionOrder?.unsubscribe();
+  }
+
 }

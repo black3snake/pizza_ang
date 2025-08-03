@@ -1,7 +1,8 @@
-<!--<div class="product" *isChicken="product.description">-->
+<!--<div class="product-card" *isChicken="product-card.description">-->
 <div class="product" >
   <div class="product__image" *ngIf="product.image; else defaultImageBlock">
-    <img [src]="'assets/images/' + product.image" [alt]="product.imageAlt">
+<!--    <img [src]="'assets/images/' + product.image" [alt]="product.imageAlt">-->
+    <img [src]="product.image" [alt]="product.imageAlt">
   </div>
   <ng-template #defaultImageBlock>
     <div class="product__image">
@@ -9,19 +10,20 @@
     </div>
   </ng-template>
   <custom-title [title]="product.title | abbreviation">
-<!--  <custom-title [title]="product.title | uppercase">-->
+<!--  <custom-title [title]="product-card.title | uppercase">-->
     <!--    <p first>head message</p>-->
     <!--    <p second #second>wow</p>-->
   </custom-title>
   <app-rating [rating]="rating"></app-rating>
-  <!--  <div class="product__title">{{product.title}}</div>-->
-<!--  <div class="product__text" isAutoBgColor>{{ product.description | chickenDescription}}-->
+  <!--  <div class="product__title">{{product-card.title}}</div>-->
+<!--  <div class="product__text" isAutoBgColor>{{ product-card.description | chickenDescription}}-->
   <div class="product__text" isAutoBgColor>{{ product.description | wordUpper: ['томат', 'сыр']}}
 <!--   Кол-во:{{cartProductService.getCommonCount()}}-->
   </div>
   <div class="product__action" #elem>
-    <button class="btn product__btn btn-add-to-cart" (click)="addProductToCart()">В корзину</button>
+    <a class="btn product__btn btn-add-to-cart" routerLink="/order" [queryParams]="{product: product.title}">В корзину</a>
+    <a class="btn product__btn btn-white" [routerLink]="['/products', product.id]">Подробнее</a>
   </div>
   <div>{{product.datetime | date: 'full' | uppercase}}</div>
 </div>
-<!--(click)="addToCart(product, orderElement)"-->
+<!--(click)="addToCart(product-card, orderElement)"-->

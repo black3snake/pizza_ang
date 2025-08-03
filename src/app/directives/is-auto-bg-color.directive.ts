@@ -68,9 +68,9 @@ export class IsAutoBgColorDirective implements OnInit {
 
   ngOnInit(): void {
     const time = this.getCurrentTimeLocal();
-    console.log(time);
+    // console.log(time);
     const namePartOfDay = this.getCurrentTimeRange(time);
-    console.log(namePartOfDay?.name);
+    // console.log(namePartOfDay?.name);
     if (namePartOfDay) {
       this.changeBgColor(namePartOfDay.name);
     }

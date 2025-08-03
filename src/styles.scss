@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
 }
+
 @font-face {
   font-family: Muller;
   src: url(/assets/fonts/MullerRegular.otf);
@@ -47,13 +48,21 @@ body {
   text-align: center;
 }
 
+.btn.product__btn.btn-white {
+  background-color: transparent;
+  border: 1px solid rgb(255, 175, 24);
+  color: rgb(255, 175, 24);
+  margin: 10px 0;
+}
+
 /* 1024 - 1229 */
-@media screen  and (max-width : 1229px) {
+@media screen and (max-width: 1229px) {
   .container {
     padding-left: 15px;
     padding-right: 15px;
   }
 }
+
 // перенесено
 .main {
   margin: 132px 0 81px 0;
@@ -121,7 +130,6 @@ body {
 }
 
 
-
 .main__btn {
   width: 224px;
   height: 60px;
@@ -145,7 +153,6 @@ body {
   justify-content: space-between;
   flex-wrap: wrap;
 }
-
 
 
 .order {
@@ -240,15 +247,18 @@ body {
   font-size: 20px;
   font-family: MullerBold, sans-serif;
 }
+
 .cookie-title span {
   font-size: 40px;
   cursor: pointer;
 }
+
 .cookie-text {
   font-size: 16px;
   line-height: 20px;
   margin-top: 10px;
 }
+
 .cookie-button .btn {
   border: none;
   outline: none;
@@ -256,9 +266,39 @@ body {
   width: 100%;
 }
 
+.loader-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.25);
+
+  .loader {
+    border: 15px solid #f3f3f3;
+    border-top: 15px solid #ffaf18;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 //Adaptive
 /* 1024 - 1229 */
-@media screen  and (max-width : 1229px) {
+@media screen and (max-width: 1229px) {
   .main__image {
     width: 400px;
   }
@@ -281,7 +321,7 @@ body {
 }
 
 /* 768 - 1023 */
-@media screen  and (max-width : 1023px) {
+@media screen and (max-width: 1023px) {
   .main__container {
     flex-direction: column;
   }
@@ -324,8 +364,9 @@ body {
     justify-content: center;
   }
 }
+
 /* 425 - 767 */
-@media screen  and (max-width : 767px) {
+@media screen and (max-width: 767px) {
   .footer__container {
     justify-content: space-between;
   }
@@ -382,7 +423,7 @@ body {
 }
 
 /* 375 - 424 */
-@media screen  and (max-width : 424px) {
+@media screen and (max-width: 424px) {
   .menu {
     display: none;
   }
@@ -435,7 +476,7 @@ body {
 }
 
 /* 320 - 374 */
-@media screen  and (max-width : 374px) {
+@media screen and (max-width: 374px) {
   .main__double-title {
     font-size: 38px;
   }

@@ -4,7 +4,9 @@
       <img src="assets/images/logo.png" alt="logo">
     </div>
     <div class="footer__right">
-      Все права защищены, <span>2020</span>
+      Все права защищены,
+<!--      <span [appYear]="loggedStateHeader ? currentYear : '2020'"></span>-->
+      <span #yearSpan></span>
     </div>
   </div>
 </footer>

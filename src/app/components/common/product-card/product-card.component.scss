@@ -30,6 +30,12 @@
 }
 
 
+.product__action {
+  display: flex;
+  flex-direction: column;
+}
+
+
 .product__btn {
   background-color: rgb(255, 175, 24);
   width: 242px;

@@ -46,6 +46,9 @@
     </nav>
     <div class="header__cart">
       <img src="assets/images/cart.png" alt="cart">
+      <a href="#" (click)="login()" *ngIf="!loggedState">Войти</a>
+      <a href="#" (click)="logout()" *ngIf="loggedState">Выйти</a>
+      <app-timer></app-timer>
     </div>
   </div>
 </header>

@@ -4,6 +4,7 @@
       <div class="double-title order__double-title">
         <span class="double-title_span">Хватит думать!</span>
         Доставим заказ за 30 минут!
+        <a routerLink="/order" [queryParams]="{product: formValues.productTitle + ' 1'}">Тест queryParams</a>
       </div>
       <div class="order__text-message">Мы гарантированно доставим вашу пиццу за 30 минут с момента оформления
                                        заказа. Если мы опоздаем даже на 1 минуту - вы получаете весь заказ

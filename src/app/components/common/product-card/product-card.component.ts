@@ -4,19 +4,19 @@ import {TitleComponent} from "../title/title.component";
 import {CartProductService} from "src/app/services/cart-product.service";
 
 @Component({
-  selector: 'product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss'],
+  selector: 'product-card',
+  templateUrl: './product-card.component.html',
+  styleUrls: ['./product-card.component.scss'],
   // encapsulation: ViewEncapsulation.None
   providers: [CartProductService],
 })
 // export class ProductComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
-export class ProductComponent {
+export class ProductCardComponent {
 
-  // @Input() product: ProductType = {} as ProductType;
+  // @Input() product-card: ProductType = {} as ProductType;
   @Input() product: ProductType;
-  // get product(): ProductType { return this._product}
-  // set product(param: ProductType) {
+  // get product-card(): ProductType { return this._product}
+  // set product-card(param: ProductType) {
   //   param.title = param.title.toUpperCase();
   //   this._product = param;
   // }
@@ -35,6 +35,7 @@ export class ProductComponent {
 
   constructor(public cartProductService: CartProductService) {
     this.product = {
+      id: 0,
       image: '',
       imageAlt: '',
       title: '',
@@ -75,9 +76,9 @@ export class ProductComponent {
   //   // console.log('ngOnDestroy');
   // }
 
-  addProductToCart() {
-    this.cartProductService.count++;
-    this.addToCartEvent.emit(this._titleComponent.toUpper())
-  }
+  // addProductToCart() {
+  //   this.cartProductService.count++;
+  //   this.addToCartEvent.emit(this._titleComponent.toUpper())
+  // }
 
 }
