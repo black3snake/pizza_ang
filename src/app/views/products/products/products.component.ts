@@ -1,10 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ProductType} from "../../../types/product.type";
-import {ProductService} from "../../../services/product.service";
-import {CartService} from "../../../services/cart.service";
 import {Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {catchError, map, of, retry, Subscription, tap, throwError} from "rxjs";
+import {ProductService} from "../../../shared/services/product.service";
+import {ProductType} from "../../../../types/product.type";
 
 
 @Component({

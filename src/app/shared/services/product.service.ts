@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import {ProductType} from "../types/product.type";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {map, Observable, retry, tap} from "rxjs";
 import {Router} from "@angular/router";
+import {ProductType} from "../../../types/product.type";
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ProductService {
   // private products: ProductType[] = [
   //   {

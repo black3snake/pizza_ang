@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {ProductType} from "../types/product.type";
+import {ProductType} from "../../../types/product.type";
 
 @Pipe({
   name: 'chickenProducts'

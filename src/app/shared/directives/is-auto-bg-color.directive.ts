@@ -1,6 +1,6 @@
 import {Directive, HostBinding, Input, OnInit} from '@angular/core';
-import {TimeRangeType} from "../types/time-range.type";
-import {BgColorType} from "../types/bg-color.type";
+import {TimeRangeType} from "../../../types/time-range.type";
+import {BgColorType} from "../../../types/bg-color.type";
 
 @Directive({
   selector: '[isAutoBgColor]'
