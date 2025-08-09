@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {CartService} from "src/app/services/cart.service";
-import {AuthService} from "../../../auth/auth.service";
 import {Subscription} from "rxjs";
+import {AuthService} from "../../../core/auth/auth.service";
 
 @Component({
   selector: 'footer-component',

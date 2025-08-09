@@ -23,7 +23,7 @@ export class ProductCardComponent {
 
   // private _product: ProductType;
 
-  @Output() addToCartEvent: EventEmitter<string> = new EventEmitter<string>();
+  // @Output() addToCartEvent: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild(TitleComponent)
   private _titleComponent!: TitleComponent;
