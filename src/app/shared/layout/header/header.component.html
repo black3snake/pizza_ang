@@ -46,9 +46,23 @@
     </nav>
     <div class="header__cart">
       <img src="assets/images/cart.png" alt="cart">
-      <a href="#" (click)="login()" *ngIf="!loggedState">Войти</a>
-      <a href="#" (click)="logout()" *ngIf="loggedState">Выйти</a>
+<!--      <a href="#" (click)="login()" *ngIf="!loggedState">Войти</a>-->
+<!--      <a href="#" (click)="logout()" *ngIf="loggedState">Выйти</a>-->
       <app-timer></app-timer>
+
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngIf="!loggedState" (click)="login()">
+          <mat-icon>login</mat-icon>
+          <span>Войти</span>
+        </button>
+        <button mat-menu-item *ngIf="loggedState" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Выйти</span>
+        </button>
+      </mat-menu>
     </div>
   </div>
 </header>

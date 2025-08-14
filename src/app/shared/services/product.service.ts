@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {map, Observable, retry, tap} from "rxjs";
 import {Router} from "@angular/router";
 import {ProductType} from "../../../types/product.type";
+import {environment} from "../../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -90,7 +91,7 @@ export class ProductService {
   }
 
   getProducts(): Observable<ProductType[]> {
-    return this.http.get<ProductType[]>('https://testologia.ru/pizzas')
+    return this.http.get<ProductType[]>(environment.apiURL + 'pizzas')
   }
 
   getProduct2(id: number): ProductType | undefined {
@@ -109,10 +110,10 @@ export class ProductService {
   }
 
   getProduct(id: number): Observable<ProductType> {
-    return this.http.get<ProductType>(`https://testologia.ru/pizzas?id=${id}`);
+    return this.http.get<ProductType>(environment.apiURL + `pizzas?id=${id}`);
   }
 
   createOrder(data: {product: string, address: string, phone: string}) {
-    return this.http.post<{success: boolean, message?: string}>('https://testologia.ru/order-pizza', data);
+    return this.http.post<{success: boolean, message?: string}>(environment.apiURL + 'order-pizza', data);
   }
 }

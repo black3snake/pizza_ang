@@ -1,0 +1,10 @@
+{
+  "/order-pizza": {
+    "target": "https://testologia.ru",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/order-pizza": ""
+    }
+  }
+}

@@ -1,13 +1,17 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {from, map, Observable, Subject, Subscription} from "rxjs";
 import {CartService} from "../../../shared/services/cart.service";
+import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {PopupComponent} from "../../../shared/components/popup/popup.component";
+import {environment} from "../../../../environments/environment";
+
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit, OnDestroy {
+export class MainComponent implements OnInit, OnDestroy, AfterViewInit {
 
   // private observable: Observable<number>;
 
@@ -16,7 +20,7 @@ export class MainComponent implements OnInit, OnDestroy {
   private subscribption2: Subscription | null = null;
   private subject: Subject<number>;
 
-  constructor(public cartService: CartService) {
+  constructor(public cartService: CartService, private modalService: NgbModal) {
     // this.promise = new Promise<string>((resolve, reject) => {
     //   setTimeout(() => {
     //     resolve('hello Promise');
@@ -31,7 +35,6 @@ export class MainComponent implements OnInit, OnDestroy {
     const timeout1 = setTimeout(() => {
       this.subject.complete();
     }, 4000);
-
 
     // this.observable = new Observable(observer => {
     //   let counter = 0;
@@ -54,12 +57,15 @@ export class MainComponent implements OnInit, OnDestroy {
     // })
 
     // this.observable = from([1, 2, 3, 4, 5]);
-
   }
 
-
+  // private modalRef!: NgbModalRef;
 
   ngOnInit() {
+
+    console.log(environment)
+    // const myModalAlternative = new bootstrap.Modal('#myModal', {})
+    // myModalAlternative.show();
     this.subscribption = this.subject
       .subscribe(
         {
@@ -71,6 +77,19 @@ export class MainComponent implements OnInit, OnDestroy {
           }
         }
       )
+  }
+
+  @ViewChild(PopupComponent)
+  private popupComponent!: PopupComponent;
+
+  ngAfterViewInit() {
+
+    this.popupComponent.open();
+
+    // const modalRef = this.modalService.open(PopupComponent);
+    // modalRef.componentInstance.data = 'Main component';
+
+    // this.modalRef  = this.modalService.open(this.popup, {})
   }
 
     // this.observable.subscribe((param:number)  => {
@@ -91,7 +110,9 @@ export class MainComponent implements OnInit, OnDestroy {
   //   target.scrollIntoView({behavior: 'smooth'});
   // }
 
-  test() {
+  test(popup: TemplateRef<ElementRef>) {
+    // this.modalService.open(popup, {})
+
     this.subscribption2 = this.subject
       .pipe(
         map((number: number) => {
@@ -102,5 +123,7 @@ export class MainComponent implements OnInit, OnDestroy {
       console.log('subscribe 2, ', param);
     });
   }
+
+
 
 }

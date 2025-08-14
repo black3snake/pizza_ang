@@ -1,1 +1,2 @@
-<div class="current-timer">{{ timerString}}</div>
+<!--<div class="current-timer">{{ timerString}}</div>-->
+<div class="current-timer"> {{ dateTime$ | async | date : 'dd MMMM yyyy, HH:mm:ss' }}</div>

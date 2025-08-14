@@ -18,14 +18,14 @@ export class TimerComponent implements OnInit, OnDestroy {
     // setInterval(() => {
     //   this.timerUI();
     // }, 5000)
-    this.subscription = timer(0, 5000)
-      .pipe(
-        map(()=> new Date()),
-        map(date => this.timerUI(date))
-      ).subscribe(time => {
-        this.timerString = time;
-      })
 
+  //   this.subscription = timer(0, 5000)
+  //     .pipe(
+  //       map(()=> new Date()),
+  //       map(date => this.timerUI(date))
+  //     ).subscribe(time => {
+  //       this.timerString = time;
+  //     })
   }
 
   ngOnDestroy(): void {
@@ -39,5 +39,10 @@ export class TimerComponent implements OnInit, OnDestroy {
     this.timerString = this.datePipe.transform(date, 'dd MMMM YYYY, HH:mm:ss') || '';
     return this.timerString;
   }
+
+
+  dateTime$ = timer(0, 5000).pipe(
+    map(() => new Date())
+  );
 
 }
